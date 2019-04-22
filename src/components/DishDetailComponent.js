@@ -28,18 +28,19 @@ class DishDetail extends React.Component {
             let com = dish.comments.map((comments)=>
                 
                 <li key={comments.id}>
-                    {comments.comment}
-                    <div>
-                        --
-                    <span> {comments.author} , </span>
-                    <span>{comments.date}</span>
-                    </div>
+                    <div className="comment">{comments.comment}</div>
+                    
+                    <ul class="list-inline">
+                        <li class="list-inline-item">-- {comments.author} , </li>
+                        <li class="list-inline-item">{comments.date}</li>
+                    </ul>
+                    <br/>
                 </li>);
             
             return (
                 <div>
-                    <h4>Comments</h4>
-                    <ul className="list-unstyled">{com}</ul>
+                    <h4 className="text-left">Comments</h4>
+                    <ul className="list-unstyled text-left">{com}</ul>
                 </div>
                 );
         }
