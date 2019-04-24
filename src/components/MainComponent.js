@@ -3,6 +3,8 @@ import { Navbar , NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
 import {DISHES} from '../shared/dishes';
 import DishDetail from './DishDetailComponent';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 
 class Main extends Component {
 
@@ -21,16 +23,20 @@ class Main extends Component {
     console.log('inshow:',this.state);
   }
 
+
+
+
+
+
+
+
   render() {
     return (
       <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante con fe</NavbarBrand>
-          </div>
-        </Navbar>
-        <Menu dishes={this.state.dishes} onClick={(dishId) => {console.log(dishId);return this.showImg(dishId)}}/>
-        {(this.state.selectedDish !== null) && (<DishDetail dish={this.state.dishes.filter((dish)=> dish.id === this.state.selectedDish)}/>)}
+        <Header/>
+          <Menu dishes={this.state.dishes} onClick={(dish) => {console.log('dishID',dish);return this.showImg(dish)}}/>
+          {this.state.selectedDish && (<DishDetail dish={this.state.dishes.filter((dish)=> dish.id === this.state.selectedDish)}/>)}
+        <Footer/>
       </div>
     );
   }

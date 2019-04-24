@@ -3,6 +3,7 @@ import { Media } from 'reactstrap';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
 import DishDetailComponent from './DishDetailComponent';
 
+
 class Menu extends React.Component {
     render(){
         const menu = this.props.dishes.map((dish)=>{
@@ -25,17 +26,17 @@ class Menu extends React.Component {
                     </div>
                 </div>
             
-            {/* // <div className="container">
-            //     <div className="row">
-                        // {menu}
-                // </div>
-                {/* <div className="row"> */}
-                    {/* <div className="col-12 col-md-5 m-1">
+             {/* <div className="container">
+                <div className="row">
+                        {menu}
+                </div>
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
                         {this.renderDish(this.state.selectedDish)}
-                    </div> */}
-                    {/* <DishDetailComponent selectedDish ={this.props.selected} /> */}
-                {/* </div> */}
-             {/* </div>  */}
+                    </div>
+                    <DishDetailComponent selectedDish ={this.props.selected} />
+                </div>
+             </div>  */}
             </React.Fragment>
         );
     }
