@@ -32,7 +32,7 @@ class Main extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Header/>
           <Menu dishes={this.state.dishes} onClick={(dish) => {console.log('dishID',dish);return this.showImg(dish)}}/>
           {this.state.selectedDish && (<DishDetail dish={this.state.dishes.filter((dish)=> dish.id === this.state.selectedDish)}/>)}
