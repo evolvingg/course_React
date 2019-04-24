@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import { Navbar , NavbarBrand } from 'reactstrap';
-import './App.css';
-import Menu from './components/MenuComponent';
-import {DISHES} from './shared/dishes';
+import Menu from './MenuComponent';
+import {DISHES} from '../shared/dishes';
+import DishDetail from './DishDetailComponent';
 
 class Main extends Component {
 
@@ -14,7 +13,14 @@ class Main extends Component {
       selectedDish: null
     };
   }
-  
+
+  showImg(imgText) {
+    this.setState({
+        selectedDish: imgText
+    });
+    console.log('inshow:',this.state);
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,10 +29,11 @@ class Main extends Component {
             <NavbarBrand href="/">Ristorante con fe</NavbarBrand>
           </div>
         </Navbar>
-        <Menu dishes={this.state.dishes}/>
+        <Menu dishes={this.state.dishes} onClick={(dishId) => {console.log(dishId);return this.showImg(dishId)}}/>
+        {(this.state.selectedDish !== null) && (<DishDetail dish={this.state.dishes.filter((dish)=> dish.id === this.state.selectedDish)}/>)}
       </div>
     );
   }
 }
 
-export default App;
+export default Main;

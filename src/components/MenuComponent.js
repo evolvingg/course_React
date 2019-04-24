@@ -4,25 +4,11 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'rea
 import DishDetailComponent from './DishDetailComponent';
 
 class Menu extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={
-            selectedDish : null
-        }
-    }
-
-    showImg(imgText) {
-        this.setState({
-            selectedDish: imgText
-        });
-        console.log(this.state);
-    }
-
     render(){
         const menu = this.props.dishes.map((dish)=>{
             return (
                 <div className="col-12 col-md-5 m-1">
-                    <Card key={dish.id} onClick={()=>this.showImg(dish)}>
+                    <Card key={dish.id} onClick={()=>this.props.onClick(dish.id)}>
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
@@ -32,17 +18,25 @@ class Menu extends React.Component {
             );
         })
         return (
-            <div className="container">
-                <div className="row">
+            <React.Fragment>
+                <div className="container">
+                    <div className="row">
                         {menu}
+                    </div>
                 </div>
+            
+            {/* // <div className="container">
+            //     <div className="row">
+                        // {menu}
+                // </div>
                 {/* <div className="row"> */}
                     {/* <div className="col-12 col-md-5 m-1">
                         {this.renderDish(this.state.selectedDish)}
                     </div> */}
-                    <DishDetailComponent selectedDish ={this.state.selectedDish} />
+                    {/* <DishDetailComponent selectedDish ={this.props.selected} /> */}
                 {/* </div> */}
-            </div>
+             {/* </div>  */}
+            </React.Fragment>
         );
     }
 

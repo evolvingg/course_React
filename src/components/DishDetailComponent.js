@@ -7,7 +7,8 @@ class DishDetail extends React.Component {
     }
 
     renderDish(dish){
-        if(dish!==null){
+        
+        if(dish&&dish.length!==0 && dish!==null){
             return (
                 <Card>
                     <CardImg width="100%" src={dish.image}/>
@@ -24,15 +25,16 @@ class DishDetail extends React.Component {
     }
 
     renderComments(dish) {
-        if(dish!==null) {
+        if(dish && dish.length!==0) {
+            console.log('Dish:',dish);
             let com = dish.comments.map((comments)=>
                 
                 <li key={comments.id}>
                     <div className="comment">{comments.comment}</div>
                     
-                    <ul class="list-inline">
-                        <li class="list-inline-item">-- {comments.author} , </li>
-                        <li class="list-inline-item">{comments.date}</li>
+                    <ul className="list-inline">
+                        <li className="list-inline-item">-- {comments.author} , </li>
+                        <li className="list-inline-item">{comments.date}</li>
                     </ul>
                     <br/>
                 </li>);
@@ -50,15 +52,18 @@ class DishDetail extends React.Component {
     }
 
     render(){
+        console.log('props',this.props.dish);
        return (
-            <div className="row">
+           <div className="container">
+                <div className="row">
                 <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.props.selectedDish)}
+                    {this.renderDish(this.props.dish[0])}
                 </div>
                 <div className="col-12 col-md-5 m-1">
-                    {this.renderComments(this.props.selectedDish)}
+                    {this.renderComments(this.props.dish[0])}
                 </div>
             </div>
+           </div>
        );
     }
 }
